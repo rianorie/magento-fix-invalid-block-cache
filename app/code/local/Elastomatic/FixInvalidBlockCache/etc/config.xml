@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Elastomatic_FixInvalidBlockCache>
+            <version>0.1.0</version>
+        </Elastomatic_FixInvalidBlockCache>
+    </modules>
+    <global>
+        <models>
+            <fixinvalidblockcache>
+                <class>Elastomatic_FixInvalidBlockCache_Model</class>
+            </fixinvalidblockcache>
+        </models>
+    </global>
+    <adminhtml>
+        <events>
+            <controller_action_postdispatch_adminhtml_catalog_product_save>
+                <observers>
+                    <foobar>
+                        <class>fixinvalidblockcache/observer</class>
+                        <method>clearBlockCache</method>
+                    </foobar>
+                </observers>
+            </controller_action_postdispatch_adminhtml_catalog_product_save>
+        </events>
+    </adminhtml>
+</config>
